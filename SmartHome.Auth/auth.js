@@ -24,7 +24,9 @@ function findUser(username, password) {
 }
 
 function createToken(user) {
-    const accessToken = jwt.sign({ username: user.username,  role: user.role }, process.env.ACCESS_TOKEN_SECRET);
+    const accessToken = jwt.sign({ username: user.username,  role: user.role }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '30 days'
+    });
     return accessToken;
 }
 

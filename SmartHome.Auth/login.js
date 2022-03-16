@@ -1,16 +1,15 @@
 const authentication = require('./auth');
 
-function userLoginProcess(username, password) {
-    const user = authentication.findUser(username, password);
+function generateToken(username, password) {
 
-    console.log(user);
+    const user = authentication.findUser(username, password);
 
     if (user) {
         return authentication.createToken(user);
     } else {
-        return "Username or password is incorrect";
+        return "unauthorized";
     }
 
 }
 
-module.exports = { userLoginProcess };
+module.exports = { generateToken };
